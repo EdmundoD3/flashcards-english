@@ -1,4 +1,4 @@
-{
+const data = {
   "present_and_past": {
     "name": "passive",
     "description": [

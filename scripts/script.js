@@ -19,11 +19,9 @@ class Grammar {
       console.error("Error en getGrammar:", error);
     }
   }
-  async getGrammar(url = "/data/Essential_Grammar_in_Use.json") {
+  async getGrammar(data) {
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Error al cargar los datos");
-      this.data = await response.json();
+      this.data = await data;
       const lesson = Object.keys(this.data);
       this.lesson = lesson.map((e)=>({link:e,name:this.data[e].name}))
     } catch (error) {
@@ -70,7 +68,7 @@ class Grammar {
   }
 
   async start() {
-    await this.getGrammar();
+    await this.getGrammar(data);
     if (this.params.lesson=="") return this.mainMenu()
     
     if (this.dataLesson?.list) {
@@ -142,12 +140,3 @@ const grammar = new Grammar({
   mainTitle
 });
 grammar.start();
-
-
-
-const data = [
-  { front: "Pregunta 1", back: "Respuesta 1", color: "red" },
-  { front: "Pregunta 2", back: "Respuesta 2", color: "blue" },
-  { front: "Pregunta 3", back: "Respuesta 3" },
-];
-// cardStudy.data = data;
