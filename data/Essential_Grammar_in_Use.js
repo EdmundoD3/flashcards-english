@@ -38,7 +38,7 @@ const data = {
         "back": "Él habla tres idiomas."
       },
       {
-        "front": "I am studying now, but I usually read in the evening.",
+        "front": "I am studying now, but I usually read at night.",
         "back": "Estoy estudiando ahora, pero generalmente leo por la noche."
       },
       {

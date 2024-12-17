@@ -63,9 +63,6 @@
   font-size: 1em;
 } */
 
-.cards .card:hover {
-  transform: scale(1.1, 1.1);
-}
 /* .cards .card:hover .tip {
 display:none;
 } */
@@ -119,6 +116,7 @@ display:block;
 .selected-card{
   border-color: magenta ;
   border-style: dotted;
+  transform: scale(1.1, 1.1);
 }
 
 .none {
