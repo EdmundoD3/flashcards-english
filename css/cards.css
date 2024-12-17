@@ -1,0 +1,126 @@
+/* From Uiverse.io by kamehame-ha https://uiverse.io/kamehame-ha/chilly-snake-91 */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cards .red {
+  background-color: #732449;
+  color: #d9b4a7;
+}
+.cards .red-back {
+  background-color: #d9b4a7;
+  color: #732449;
+}
+
+.cards .blue {
+  background-color: #00b6c4;
+  /* a4feff */
+}
+.cards .blue-back {
+  background-color: #a4feff;
+}
+
+.cards .green {
+  background-color: #19485f;
+}
+.cards .green-back {
+  background-color: #d9e0a4;
+}
+.cards .standard {
+  background-color: gray;
+}
+.cards .standard-back {
+  background-color: rgb(195, 195, 195);
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100px;
+  max-height: 40%;
+  min-width: 250px;
+  max-width: 100%;
+  border-radius: 10px;
+  /* color: white; */
+  cursor: pointer;
+  transition: 400ms;
+  position: relative;
+  user-select: none;
+}
+
+.cards .card .tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+/* .cards .card .second-text {
+  font-size: 1em;
+} */
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+/* .cards .card:hover .tip {
+display:none;
+} */
+.tip {
+display:block;
+}
+/* .second-text {
+display:none;
+} */
+/* .cards .card:hover .tip {
+display:none;
+} */
+/* .cards .card:hover .second-text {
+display:block;
+} */
+.cards:hover > .card:not(:hover) {
+  /* filter: blur(10px); */
+  transform: scale(0.9, 0.9);
+}
+
+
+.copy-btn {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+.copy-btn:hover {
+  background-color: #45a049;
+}
+
+.alert {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: none; /* Inicialmente oculta */
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.selected-card{
+  border-color: magenta ;
+  border-style: dotted;
+}
+
+.none {
+  display: none;
+}
