@@ -1,6 +1,6 @@
 const data = {
   "present_and_past": {
-    "name": "passive",
+    "name": "present and past",
     "description": [
       { "title": "present and past", "description": "" },
       { "title": "Explain", "description": "" }

@@ -50,7 +50,7 @@ class Card extends HTMLElement {
     this.isFront = this.storageIsFront
     this.toggleCardBtn.textContent = this.isFront ? "Front" : "Back";
     this.toggleCardBtn.addEventListener("click", () => this.interChangeSideCard());
-    this.toggleCardBtn.classList.add("none")
+    this.btnsContents.classList.add("none")
 
     this.shuffleCardsBtn = document.createElement("button");
     this.shuffleCardsBtn.classList.add("btn");
@@ -208,7 +208,7 @@ class Card extends HTMLElement {
   // Asignar datos desde un array
   set data(array) {
     this.cardsData = array; // Guardar datos
-    this.toggleCardBtn.classList.remove("none")
+    this.btnsContents.classList.remove("none")
     this.renderCards(); // Renderizar tarjetas
     this.cardElement[this._currentIndex].selected.on()
     this.cardElement[this._currentIndex].rechargeColor()
