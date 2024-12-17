@@ -105,7 +105,7 @@ class Card extends HTMLElement {
   get styleLink() {
     const styleLink = document.createElement("link");
     styleLink.rel = "stylesheet";
-    styleLink.href = "/css/cards.css"; // Ruta al archivo de estilos
+    styleLink.href = "css/cards.css"; // Ruta al archivo de estilos
     return styleLink;
   }
   get storageIsFront() {
