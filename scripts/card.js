@@ -149,20 +149,20 @@ class Card extends HTMLElement {
 
     const frontCard = document.createElement("p");
     frontCard.classList.add("tip");
-    frontCard.textContent = index+'.-'+ this.isFront ? front : back;
+    frontCard.textContent = `${index + 1}.- ${this.isFront ? front : back}`
 
     const copyBtn = document.createElement("button");
     copyBtn.classList.add("copy-btn");
     copyBtn.textContent = "Copy";
 
-    let currentText = index+'.-'+ this.isFront ? front : back;
+    let currentText = `${index + 1}.- ${this.isFront ? front : back}`
 
     // Envolver la lógica de cambio con eventManager
     const toggleCard = () => {
       isFront = !isFront;
       rechargeColor();
-      frontCard.textContent =index+'.-' + isFront ? front : back;
-      currentText = index+'.-'+ isFront ? front : back; // Actualiza el texto
+      frontCard.textContent = `${index + 1}.- ${isFront ? front : back}`
+      currentText = `${index + 1}.- ${isFront ? front : back}` // Actualiza el texto
     }
     const toggleCardContent = eventManager(toggleCard, this.timeToggle);
 
