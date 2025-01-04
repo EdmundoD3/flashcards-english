@@ -125,7 +125,7 @@ class Card extends HTMLElement {
   }
 
   // Crear una tarjeta individual
-  createCard({ front, back, color = "red",index }) {
+  createCard({ front, back, color = "blue",index }) {
     const card = document.createElement("div");
     let isFront = this.isFront;
     let isSelected = false
@@ -149,20 +149,20 @@ class Card extends HTMLElement {
 
     const frontCard = document.createElement("p");
     frontCard.classList.add("tip");
-    frontCard.textContent = this.isFront ? front : back;
+    frontCard.textContent = index+'.-'+ this.isFront ? front : back;
 
     const copyBtn = document.createElement("button");
     copyBtn.classList.add("copy-btn");
     copyBtn.textContent = "Copy";
 
-    let currentText = this.isFront ? front : back;
+    let currentText = index+'.-'+ this.isFront ? front : back;
 
     // Envolver la lógica de cambio con eventManager
     const toggleCard = () => {
       isFront = !isFront;
       rechargeColor();
-      frontCard.textContent = isFront ? front : back;
-      currentText = isFront ? front : back; // Actualiza el texto
+      frontCard.textContent =index+'.-' + isFront ? front : back;
+      currentText = index+'.-'+ isFront ? front : back; // Actualiza el texto
     }
     const toggleCardContent = eventManager(toggleCard, this.timeToggle);
 

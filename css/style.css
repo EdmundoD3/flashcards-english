@@ -1,14 +1,23 @@
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
 body {
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d8886b;
+  background-color: #1e3a45;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 /* Estilos del encabezado */
 header {
-  background-color: #4caf50;
-  padding: 10px;
+  background-color: #A8E6CF;
+  padding-bottom: 15px;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
 }
 
 /* Estilos del botón Go Home */

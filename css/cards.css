@@ -17,10 +17,11 @@
 
 .cards .blue {
   background-color: #00b6c4;
-  /* a4feff */
+  color: #a4feff ;
 }
 .cards .blue-back {
   background-color: #a4feff;
+  color: #00b6c4;
 }
 
 .cards .green {
@@ -55,29 +56,15 @@
 }
 
 .cards .card .tip {
-  font-size: 1em;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
-/* .cards .card .second-text {
-  font-size: 1em;
-} */
-
-/* .cards .card:hover .tip {
-display:none;
-} */
 .tip {
 display:block;
+padding: 0 1rem;
 }
-/* .second-text {
-display:none;
-} */
-/* .cards .card:hover .tip {
-display:none;
-} */
-/* .cards .card:hover .second-text {
-display:block;
-} */
+
 .cards:hover > .card:not(:hover) {
   /* filter: blur(10px); */
   transform: scale(0.9, 0.9);
