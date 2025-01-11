@@ -50,7 +50,7 @@ class Card extends HTMLElement {
     this.toggleCardBtn.textContent = this.isFront ? "Front" : "Back";
 
     this.toggleCardBtn.addEventListener("click",eventManager(()=>this.interChangeSideCard(), this.timeToggle));
-    this.btnsContents.classList.add("none")
+    this.btnsContents.classList.add("btn-content","none")
 
     this.shuffleCardsBtn = document.createElement("button");
     this.shuffleCardsBtn.classList.add("btn");
