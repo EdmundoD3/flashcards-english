@@ -72,11 +72,11 @@ padding: 0 1rem;
 
 
 .copy-btn {
-  padding: 10px 15px;
+  padding: 0.4rem 2rem;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0 10px 0 5px;
   cursor: pointer;
   position: absolute;
   top: 1px;

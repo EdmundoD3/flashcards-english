@@ -15,11 +15,11 @@ const eventManager = (fn, delay = 3000) => {
 
 function mezclarArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      // Seleccionar un índice aleatorio entre 0 y i
-      const j = Math.floor(Math.random() * (i + 1));
+    // Seleccionar un índice aleatorio entre 0 y i
+    const j = Math.floor(Math.random() * (i + 1));
 
-      // Intercambiar los elementos array[i] y array[j]
-      [array[i], array[j]] = [array[j], array[i]];
+    // Intercambiar los elementos array[i] y array[j]
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
@@ -48,13 +48,14 @@ class Card extends HTMLElement {
     this.toggleCardBtn.classList.add("btn");
     this.isFront = this.storageIsFront
     this.toggleCardBtn.textContent = this.isFront ? "Front" : "Back";
-    this.toggleCardBtn.addEventListener("click", () => this.interChangeSideCard());
-    this.btnsContents.classList.add("btn-content")
+
+    this.toggleCardBtn.addEventListener("click",eventManager(()=>this.interChangeSideCard(), this.timeToggle));
+    this.btnsContents.classList.add("none")
 
     this.shuffleCardsBtn = document.createElement("button");
     this.shuffleCardsBtn.classList.add("btn");
-    this.shuffleCardsBtn.textContent = "Shuffle";
-    this.shuffleCardsBtn.addEventListener("click",()=>this.shuffleCards())
+    this.shuffleCardsBtn.textContent = "shuffle";
+    this.shuffleCardsBtn.addEventListener("click", eventManager(()=>this.shuffleCards(), this.timeToggle))
 
     this.btnsContents.appendChild(this.toggleCardBtn)
     this.btnsContents.appendChild(this.shuffleCardsBtn)
@@ -76,7 +77,6 @@ class Card extends HTMLElement {
     this.cleanCard()
     this._currentIndex++
     if (this.cardsData.length - 1 < this._currentIndex) this._currentIndex = 0;
-    console.log(this._currentIndex);
     this.showCard()
   }
   previous() {
@@ -93,7 +93,7 @@ class Card extends HTMLElement {
   toggleCard() {
     this.cardElement[this._currentIndex].toggleCardContent()
   }
-  shuffleCards(){
+  shuffleCards() {
     this.cardsData = [...mezclarArray(this.cardsData)];
     this.renderCards()
   }
@@ -124,7 +124,7 @@ class Card extends HTMLElement {
   }
 
   // Crear una tarjeta individual
-  createCard({ front, back, color = "blue",index }) {
+  createCard({ front, back, color = "blue", index }) {
     const card = document.createElement("div");
     let isFront = this.isFront;
     let isSelected = false
@@ -197,12 +197,18 @@ class Card extends HTMLElement {
 
   // Renderizar todas las tarjetas
   renderCards() {
+    this.cardElement = []
+    this._currentIndex = 0
     this.cardsDiv.innerHTML = ""; // Limpiar contenedor
-    this.cardsData.forEach(({ front, back, color },index) => {
-      const card = this.createCard({ front, back, color,index });
+    this.cardsData.forEach(({ front, back, color }, index) => {
+      const card = this.createCard({ front, back, color, index });
       this.cardsDiv.appendChild(card);
     });
-    this.key()
+
+    if (this.cardElement.length) {
+      this.cardElement[this._currentIndex].selected.on();
+      this.cardElement[this._currentIndex].rechargeColor();
+    }
   }
 
   // Asignar datos desde un array
@@ -232,16 +238,20 @@ class Card extends HTMLElement {
       // Lógica envuelta en eventManager para controlar el delay
       this._debouncedHandler = this._debouncedHandler || eventManager((debouncedEvent) => {
         if (!this.cardsData.length) return;
-
         // Manejar las teclas específicas
         switch (debouncedEvent.key) {
           case 'ArrowLeft':
+          case 'a':
+          case 'A':
             this.previous();
             break;
           case 'ArrowRight':
+          case 'd':
+          case 'D':
             this.next();
             break;
           case ' ': // Barra espaciadora
+          case 's':
             this.toggleCard();
             break;
         }
