@@ -77,7 +77,6 @@ class Card extends HTMLElement {
     this.cleanCard()
     this._currentIndex++
     if (this.cardsData.length - 1 < this._currentIndex) this._currentIndex = 0;
-    console.log(this._currentIndex);
     this.showCard()
   }
   previous() {
