@@ -45,10 +45,10 @@ class Card extends HTMLElement {
 
     // Botones personalizados (toggle-button)
     this.toggleCardBtn = document.createElement("button");
-    this.toggleCardBtn.classList.add("toggle-button");
     this.toggleCardBtn.classList.add("btn");
     this.isFront = this.storageIsFront
     this.toggleCardBtn.textContent = this.isFront ? "Front" : "Back";
+
     this.toggleCardBtn.addEventListener("click",eventManager(()=>this.interChangeSideCard(), this.timeToggle));
     this.btnsContents.classList.add("none")
 
@@ -148,20 +148,21 @@ class Card extends HTMLElement {
 
     const frontCard = document.createElement("p");
     frontCard.classList.add("tip");
-    frontCard.textContent = `${index + 1}.- ${this.isFront ? front : back}`
+    const numberList = `${index + 1}.`
+    frontCard.textContent = `${numberList} ${this.isFront ? front : back}`
 
     const copyBtn = document.createElement("button");
     copyBtn.classList.add("copy-btn");
     copyBtn.textContent = "Copy";
 
-    let currentText = `${index + 1}.- ${this.isFront ? front : back}`
+    let currentText = `${numberList} ${this.isFront ? front : back}`
 
     // Envolver la lógica de cambio con eventManager
     const toggleCard = () => {
       isFront = !isFront;
       rechargeColor();
-      frontCard.textContent = `${index + 1}.- ${isFront ? front : back}`
-      currentText = `${index + 1}.- ${isFront ? front : back}` // Actualiza el texto
+      frontCard.textContent = `${numberList} ${isFront ? front : back}`
+      currentText = `${numberList} ${isFront ? front : back}` // Actualiza el texto
     }
     const toggleCardContent = eventManager(toggleCard, this.timeToggle);
 
