@@ -49,13 +49,13 @@ class Card extends HTMLElement {
     this.toggleCardBtn.classList.add("btn");
     this.isFront = this.storageIsFront
     this.toggleCardBtn.textContent = this.isFront ? "Front" : "Back";
-    this.toggleCardBtn.addEventListener("click", () => this.interChangeSideCard());
+    this.toggleCardBtn.addEventListener("click",eventManager(()=>this.interChangeSideCard(), this.timeToggle));
     this.btnsContents.classList.add("none")
 
     this.shuffleCardsBtn = document.createElement("button");
     this.shuffleCardsBtn.classList.add("btn");
     this.shuffleCardsBtn.textContent = "shuffle";
-    this.shuffleCardsBtn.addEventListener("click", () => this.shuffleCards())
+    this.shuffleCardsBtn.addEventListener("click", eventManager(()=>this.shuffleCards(), this.timeToggle))
 
     this.btnsContents.appendChild(this.toggleCardBtn)
     this.btnsContents.appendChild(this.shuffleCardsBtn)
@@ -196,12 +196,18 @@ class Card extends HTMLElement {
 
   // Renderizar todas las tarjetas
   renderCards() {
+    this.cardElement = []
+    this._currentIndex = 0
     this.cardsDiv.innerHTML = ""; // Limpiar contenedor
     this.cardsData.forEach(({ front, back, color }, index) => {
       const card = this.createCard({ front, back, color, index });
       this.cardsDiv.appendChild(card);
     });
-    this.key()
+
+    if (this.cardElement.length) {
+      this.cardElement[this._currentIndex].selected.on();
+      this.cardElement[this._currentIndex].rechargeColor();
+    }
   }
 
   // Asignar datos desde un array
