@@ -14,7 +14,6 @@ class Grammar {
       if (!response.ok) throw new Error("Error al cargar los datos");
       const data = await response.json();
       this.dataFile = data
-      console.log("Datos cargados correctamente:", this.dataFile);
     } catch (error) {
       console.error("Error en getGrammar:", error);
     }
@@ -46,7 +45,6 @@ class Grammar {
   }
   actualizeTitle(){
     if(this.dataLesson.name) {
-      console.log(this.dataLesson.name);
       const capitalizeTitle = this.dataLesson.name.charAt(0).toUpperCase() + this.dataLesson.name.slice(1).toLowerCase()
       this.mainTitle= capitalizeTitle
       document.title = capitalizeTitle
