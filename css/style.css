@@ -71,6 +71,7 @@ header {
 }
 .card-study{
   width: 90%;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 600px) {
