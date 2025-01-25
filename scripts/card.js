@@ -13,6 +13,8 @@ const eventManager = (fn, delay = 3000) => {
   };
 };
 
+const isPreventDefault = (key) => ["ArrowDown","ArrowLeft","ArrowRight"," "].includes(key)
+
 function mezclarArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // Seleccionar un índice aleatorio entre 0 y i
@@ -231,7 +233,7 @@ class Card extends HTMLElement {
     // Define y asigna el nuevo manejador de eventos
     this._keyHandler = (event) => {
       // Prevenir siempre el comportamiento predeterminado para la barra espaciadora
-      if (event.key === ' ') {
+      if (isPreventDefault(event.key)) {
         event.preventDefault();
       }
 
@@ -252,6 +254,8 @@ class Card extends HTMLElement {
             break;
           case ' ': // Barra espaciadora
           case 's':
+          case 'S':
+          case 'ArrowDown':
             this.toggleCard();
             break;
         }
